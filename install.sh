@@ -11,8 +11,8 @@ fi
 
 
 srcdir=/run/dump1090-fa
-repo="https://github.com/wiedehopf/tar1090"
-db_repo="https://github.com/wiedehopf/tar1090-db"
+repo="https://github.com/adsbfi/tar1090"
+db_repo="https://github.com/tmantti/tar1090-db"
 ipath=/usr/local/share/tar1090
 lighttpd=no
 nginx=no
