@@ -24,7 +24,7 @@ dump1090-mutability installations should work as well, aircraft details will be 
 ## Installation
 
 ```
-sudo bash -c "$(wget -nv -O - https://github.com/wiedehopf/tar1090/raw/master/install.sh)"
+sudo bash -c "$(wget -nv -O - https://github.com/adsbfi/tar1090/raw/master/install.sh)"
 ```
 
 ## View the added webinterface
@@ -42,7 +42,7 @@ Check further down for keyboard shortcuts.
 ## Update (same command as installation)
 
 ```
-sudo bash -c "$(wget -nv -O - https://github.com/wiedehopf/tar1090/raw/master/install.sh)"
+sudo bash -c "$(wget -nv -O - https://github.com/adsbfi/tar1090/raw/master/install.sh)"
 ```
 
 Configuration should be preserved.
@@ -118,18 +118,6 @@ Then F5 to refresh the web interface in the browser.
 
 If your instance is not at /tar1090 you'll need to edit the config.js in the approppriate html folder, see "Multiple instances".
 
-## Enable Share links to ADSB-X
-```
-# ENABLE:
-sudo sed -i -e 's?.*shareBaseUrl.*?shareBaseUrl  = "https://globe.adsbexchange.com/";?' /usr/local/share/tar1090/html/config.js
-# ENABLE if the above doesn't work (updated from previous version)
-echo 'shareBaseUrl  = "https://globe.adsbexchange.com/";' | sudo tee -a /usr/local/share/tar1090/html/config.js
-# DISABLE:
-sudo sed -i -e 's?.*shareBaseUrl.*?shareBaseUrl = false;?' /usr/local/share/tar1090/html/config.js
-```
-
-If your instance is not at /tar1090 you'll need to edit the config.js in the approppriate html folder, see "Multiple instances".
-
 ## UAT receiver running dump978-fa and skyaware978:
 
 See the instructions for "Configuration part 1".
@@ -159,14 +147,14 @@ UAT traffic will be displayed as ADS-B, this can't be avoided.
 
 
 ```
-wget -nv -O /tmp/install.sh https://github.com/wiedehopf/tar1090/raw/master/install.sh
+wget -nv -O /tmp/install.sh https://github.com/adsbfi/tar1090/raw/master/install.sh
 sudo bash /tmp/install.sh /run/combine1090
 ```
 
 ## Remove / Uninstall
 
 ```
-sudo bash -c "$(wget -nv -O - https://github.com/wiedehopf/tar1090/raw/master/uninstall.sh)"
+sudo bash -c "$(wget -nv -O - https://github.com/adsbfi/tar1090/raw/master/uninstall.sh)"
 ```
 
 ## Using the filters
@@ -354,7 +342,7 @@ sudo /usr/local/share/tar1090/getupintheair.sh XXXXX 12192 adsbx
 
 ## /tar1090/?pTracks
 
-![Screenshot2](https://raw.githubusercontent.com/wiedehopf/tar1090/screenshots/screenshot4.png)
+![Screenshot2](https://raw.githubusercontent.com/adsbfi/tar1090/screenshots/screenshot4.png)
 
 - Add /?pTracks to the usual /tar1090 URL, should look like this: http://192.168.x.yy/tar1090/?pTracks
 - Shows the last 8 hours of traces you have seen, gives a nice visual representation of your coverage / range
@@ -381,7 +369,7 @@ The following command line options need to be added to for example the decoder o
 
 You should also download
 ```
-wget -O /usr/local/share/tar1090/aircraft.csv.gz https://github.com/wiedehopf/tar1090-db/raw/csv/aircraft.csv.gz
+wget -O /usr/local/share/tar1090/aircraft.csv.gz https://github.com/adsbfi/tar1090-db/raw/csv/aircraft.csv.gz
 ```
 
 and add this command line option (for exaple via /etc/default/readsb):
@@ -440,7 +428,7 @@ put in these two lines if you're using dump1090-fa
 
 if you then run the tar1090 install script afterwards you'll have an extra instance you can configure the history retention for.
 ```
-sudo bash -c "$(wget -nv -O - https://github.com/wiedehopf/tar1090/raw/master/install.sh)"
+sudo bash -c "$(wget -nv -O - https://github.com/adsbfi/tar1090/raw/master/install.sh)"
 sudo nano /etc/default/tar1090-persist
 ```
 
@@ -512,10 +500,6 @@ Optional arguments that can be added to the URL:
 alternative display style: &realHeat
 - blurryness: &heatBlur=2
 - weight of each dot for the heatmap: &heatWeight=4
-
-## offline map
-
-<https://github.com/adsbxchange/wiki/wiki/tar1090-offline-map>
 
 ## Uses this library for decompressing zstd
 
