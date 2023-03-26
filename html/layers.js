@@ -61,20 +61,6 @@ function createBaseLayers() {
         }));
     }
 
-    /*
-    world.push(new ol.layer.Tile({
-        source: new ol.source.OSM({
-            "url" : "https://map.adsbexchange.com/mapproxy/tiles/1.0.0/osm/osm_grid/{z}/{x}/{y}.png",
-            attributionsCollapsible: false,
-            maxZoom: 16,
-            transition: tileTransition,
-        }),
-        name: 'osm_adsbx',
-        title: 'OpenStreetMap ADSBx',
-        type: 'base',
-    }));
-    */
-
     world.push(new ol.layer.Tile({
         source: new ol.source.OSM({
             maxZoom: 17,
@@ -101,7 +87,7 @@ function createBaseLayers() {
         type: 'base',
     }));
 
-    if (!adsbexchange) {
+    if (!adsbfi) {
         world.push(new ol.layer.Tile({
             source: new ol.source.OSM({
                 "url" : "https://{a-d}.tile.openstreetmap.de/{z}/{x}/{y}.png",
@@ -115,7 +101,7 @@ function createBaseLayers() {
         }));
     }
 
-    if (false && adsbexchange) {
+    if (false && adsbfi) {
         jQuery('#premium_text').updateText('Premium active!');
         world.push(new ol.layer.Tile({
             source: new ol.source.XYZ({
@@ -154,7 +140,7 @@ function createBaseLayers() {
             type: 'base',
         }));
     }
-    if (0 && adsbexchange) {
+    if (0 && adsbfi) {
         world.push(new ol.layer.Tile({
             source: new ol.source.XYZ({
                 url: "https://api.maptiler.com/maps/256/{z}/{x}/{y}.png?key=HyIQ6A88uTDdX4n4MNVY",
@@ -169,7 +155,7 @@ function createBaseLayers() {
         }));
     }
 
-    if (!adsbexchange) {
+    if (!adsbfi) {
         world.push(new ol.layer.Tile({
             source: new ol.source.XYZ({
                 url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",

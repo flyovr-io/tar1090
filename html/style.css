@@ -6,6 +6,7 @@
     --FS1: calc( 10px * var(--SCALE));
     --FS2: calc( 13px * var(--SCALE));
     --FS3: calc( 17px * var(--SCALE));
+    --FS4: calc( 21px * var(--SCALE));
     --TXTCOLOR1: #003f4b;
     --TXTCOLOR2: #050505;
     --TXTCOLOR3: #101010;
@@ -50,7 +51,7 @@ select {
     z-index: 1;
     background-color: var(--BGCOLOR1);
 }
-.adsbx-selected-bg:before {
+.adsbfi-selected-bg:before {
     content: ' ';
     position:absolute;
     display:block;
@@ -61,7 +62,7 @@ select {
     background-size: calc( 148 * var(--SCALE)) calc( 148 * var(--SCALE));
     background-repeat: no-repeat;
     background-position: calc( 7px * var(--SCALE)) calc( 108px * var(--SCALE));
-    background-image: url("images/cropped-Stealth-1-192x192.png");
+    background-image: url("images/favicon.svg");
     z-index:2;
     opacity: 0.12;
 }
@@ -576,13 +577,25 @@ table.infoSectionTable tr td {
 .largeText a {
     font-weight: bold;
     color: var(--TXTCOLOR1);
-    font-size: var(--FS3);
+    font-size: var(--FS4);
 }
 
 .largeText {
     font-weight: bold;
     color: var(--TXTCOLOR1);
-    font-size: var(--FS3);
+    font-size: var(--FS4);
+}
+
+.smallText a {
+    font-weight: 700;
+    color: var(--TXTCOLOR1);
+    font-size: var(--FS2);
+}
+
+.smallText {
+    font-weight: 700;
+    color: var(--TXTCOLOR1);
+    font-size: var(--FS2);
 }
 
 .infoBlockTitleText {
