@@ -198,22 +198,7 @@ if (usp.has('reset')) {
 const feed = usp.get('feed');
 if (feed != null) {
     console.log('feed: ' + feed);
-    let split = feed.split(',');
-    if (split.length > 0) {
-        uuid = [];
-        for (let i in split) {
-            uuid.push(encodeURIComponent(split[i]));
-        }
-        if (uuid[0].length > 18) {
-            console.log('redirecting the idiot, oui!');
-            let URL = 'https://www.adsbexchange.com/api/feeders/tar1090/?feed=' + uuid[0];
-            console.log(URL);
-            //window.history.pushState(URL, "Title", URL);
-            window.location.href = URL;
-        }
-    } else {
-        console.error('uuid / feed fail!');
-    }
+    uuid = encodeURIComponent(feed);
 }
 if (usp.has('tfrs')) {
     tfrs = true;

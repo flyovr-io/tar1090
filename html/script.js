@@ -549,9 +549,7 @@ function fetchData(options) {
 
     let ac_url = [];
     if (uuid != null) {
-        for (let i in uuid) {
-            ac_url.push('uuid/?feed=' + uuid[i]);
-        }
+        ac_url.push('uuid/?feed=' + uuid);
     } else if (reApi) {
         let url = 're-api/?' + (binCraft ? 'binCraft' : 'json');
         url += zstd ? '&zstd' : '';
