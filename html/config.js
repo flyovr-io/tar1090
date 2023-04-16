@@ -35,6 +35,9 @@
 //SiteLon     = 9.0;
 //SiteName    = "My Radar Site"; // tooltip of the marker
 
+// Update GPS location (keep map centered on GPS location)
+//updateLocation = false;
+
 // Color controls for the range outline
 //range_outline_color = '#0000DD';
 //range_outline_width = 1.7;
@@ -107,6 +110,9 @@
 // constant html color for markers / tracks
 //monochromeMarkers = "#FFFFFF";
 //monochromeTracks = "#000000";
+//
+
+// altitudeChartDefaultState = true;
 
 // These settings control the coloring of aircraft by altitude.
 // All color values are given as Hue (0-359) / Saturation (0-100) / Lightness (0-100)

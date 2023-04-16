@@ -113,7 +113,6 @@ let noRegOnly = false;
 let triggerRefresh = 0;
 let firstDraw = true;
 let darkerColors = false;
-let updateLocation = false;
 let autoselect = false;
 let nogpsOnly = false;
 let trace_hist_only = false;
@@ -771,6 +770,10 @@ function initPage() {
         MapType_tar1090 = 'carto_light_all';
         lineWidth=4;
         enableLabels=true;
+    }
+
+    if (usp.has('rangeRings')) {
+        SiteCircles = Boolean(parseInt(usp.get('rangeRings')));
     }
 
     if (usp.has('limitUpdates')) {
@@ -1998,7 +2001,7 @@ function webglAddLayer() {
         let glStyle = {
             symbol: {
                 symbolType: 'image',
-                src: 'images/sprites016.png',
+                src: 'images/sprites.png',
                 size: [ 'get', 'size' ],
                 offset: [0, 0],
                 textureCoord: [ 'array',
@@ -2935,7 +2938,7 @@ function refreshPhoto(selected) {
 
     if (planespottersAPI) {
         let req = jQuery.ajax({
-            url: 'https://api.planespotters.net/pub/photos/' + urlTail,
+            url: planespottersAPIurl + urlTail,
             dataType: 'json',
             plane: selected,
         });
@@ -4513,7 +4516,7 @@ function invertMap(evt){
   ctx.globalAlpha = alpha;  // alpha 0 = no effect 1 = full effect
   ctx.fillRect(0, 0, evt.ctx.canvas.width, ctx.canvas.height);
 
-  
+
 }
 //
 // Altitude Chart begin
@@ -4559,11 +4562,15 @@ function invertMap(evt){
     }
 
     altitudeChart.init = function () {
+        let chartOn = (onMobile ? false : altitudeChartDefaultState);
+        if (usp.has('altitudeChart')) {
+            chartOn = Boolean(parseInt(usp.get('altitudeChart')));
+        }
         new Toggle({
             key: "altitudeChart",
             display: "Altitude Chart",
             container: "#settingsRight",
-            init: (onMobile ? false : true),
+            init: chartOn,
             setState: altitudeChart.render
         });
     }
