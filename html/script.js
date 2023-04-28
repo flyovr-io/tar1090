@@ -5977,7 +5977,7 @@ function refreshInt() {
     let refresh = RefreshInterval;
 
     if (uuid)
-        return 5050;
+        return 2000;
 
     // handle non globe case
     if (!globeIndex) {
