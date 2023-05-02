@@ -354,7 +354,7 @@ function createBaseLayers() {
 
     world.push(new ol.layer.Tile({
         source: new ol.source.XYZ({
-            "url" : "https://map.adsbexchange.com/mapproxy/tiles/1.0.0/openaip/ul_grid/{z}/{x}/{y}.png",
+            "url" : "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.png?apiKey=25409b62155e81f7ddc2f1a99d476d07",
             "attributions" : "openAIP.net",
             attributionsCollapsible: false,
             maxZoom: 12,
