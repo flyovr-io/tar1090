@@ -355,7 +355,7 @@ function createBaseLayers() {
     world.push(new ol.layer.Tile({
         source: new ol.source.XYZ({
             "url" : "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.png?apiKey=25409b62155e81f7ddc2f1a99d476d07",
-            "attributions" : "openAIP.net",
+            "attributions": '<a href="https://www.openaip.net">openAIP.net</a>',
             attributionsCollapsible: false,
             maxZoom: 12,
             transition: tileTransition,
