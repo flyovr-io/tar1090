@@ -483,6 +483,62 @@ function createBaseLayers() {
         europe.push(dwd);
     }
 
+    if (true) {
+        const getRainviewerLayers = async function(key) {
+            const response = await fetch("https://api.rainviewer.com/public/weather-maps.json", {credentials: "omit",});
+            const jsonData = await response.json();
+            return jsonData[key];
+        }
+
+        const rainviewerRadar = new ol.layer.Tile({
+            name: 'rainviewer',
+            title: 'RainViewer Radar',
+            type: 'overlay',
+            opacity: 0.35,
+            visible: false,
+            zIndex: 99,
+        });
+        const refreshRainviewerRadar = async function() {
+            const latestLayer = await getRainviewerLayers('radar');
+            const rainviewerRadarSource = new ol.source.XYZ({
+                url: 'https://tilecache.rainviewer.com/v2/radar/' + latestLayer.past[latestLayer.past.length - 1].time + '/512/{z}/{x}/{y}/4/1_1.png',
+                attributions: '<a href="https://www.rainviewer.com/api.html" target="_blank">RainViewer.com</a>',
+                attributionsCollapsible: false,
+                maxZoom: 20,
+            });
+            rainviewerRadar.setSource(rainviewerRadarSource);
+        };
+        
+        refreshRainviewerRadar();
+        window.setInterval(refreshRainviewerRadar, 2 * 60 * 1000);
+        world.push(rainviewerRadar);
+
+        
+
+        const rainviewerClouds = new ol.layer.Tile({
+            name: 'rainviewer',
+            title: 'RainViewer Clouds',
+            type: 'overlay',
+            opacity: 0.35,
+            visible: false,
+            zIndex: 99,
+        });
+        const refreshRainviewerClouds = async function() {
+            const latestLayer = await getRainviewerLayers('satellite');
+            const rainviewerCloudsSource = new ol.source.XYZ({
+                url: 'https://tilecache.rainviewer.com/' + latestLayer.infrared[latestLayer.infrared.length - 1].path + '/512/{z}/{x}/{y}/0/0_0.png',
+                attributions: '<a href="https://www.rainviewer.com/api.html" target="_blank">RainViewer.com</a>',
+                attributionsCollapsible: false,
+                maxZoom: 20,
+            });
+            rainviewerClouds.setSource(rainviewerCloudsSource);
+        };
+        
+        refreshRainviewerClouds();
+        window.setInterval(refreshRainviewerClouds, 2 * 60 * 1000);
+        world.push(rainviewerClouds);
+    }
+
 
     let createGeoJsonLayer = function (title, name, url, fill, stroke, showLabel = true) {
         return new ol.layer.Vector({
