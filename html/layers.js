@@ -363,7 +363,7 @@ function createBaseLayers() {
         name: 'openaip',
         title: 'openAIP TMS',
         type: 'overlay',
-        opacity: 0.7,
+        opacity: 1.0,
         visible: false,
         zIndex: 99,
         maxZoom: 13,
