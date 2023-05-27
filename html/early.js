@@ -14,7 +14,7 @@ let g = {};
 let Dump1090Version = "unknown version";
 let RefreshInterval = 1000;
 let globeSimLoad = 6;
-let adsbfi = false;
+let flyovrio = false;
 let enable_uat = false;
 let enable_pf_data = false;
 let HistoryChunks = false;
@@ -141,8 +141,8 @@ var fakeLocalStorage = function() {
 };
 
 
-if (window.location.href.match(/adsb.fi/) && window.location.pathname == '/') {
-    adsbfi = true;
+if (window.location.href.match(/flyovr.io/) && window.location.pathname == '/') {
+    flyovrio = true;
 }
 if (0 && window.self != window.top) {
     fakeLocalStorage();
@@ -339,9 +339,9 @@ let test_chunk_defer;
 const hostname = window.location.hostname;
 if (uuid) {
     // don't need receiver / chunks json
-} else if (0 || (adsbfi && (hostname.startsWith('globe.') || hostname.startsWith('globe-')))) {
-    console.log("Using adsbfi fast-path load!");
-    let data = {"zstd":true,"reapi":true,"refresh":1600,"history":1,"dbServer":true,"binCraft":true,"globeIndexGrid":3,"globeIndexSpecialTiles":[],"version":"adsbfi backend"};
+} else if (0 || (flyovrio && (hostname.startsWith('globe.') || hostname.startsWith('globe-')))) {
+    console.log("Using flyovrio fast-path load!");
+    let data = {"zstd":true,"reapi":true,"refresh":1600,"history":1,"dbServer":true,"binCraft":true,"globeIndexGrid":3,"globeIndexSpecialTiles":[],"version":"flyovrio backend"};
     get_receiver_defer = jQuery.Deferred().resolve(data);
     test_chunk_defer = jQuery.Deferred().reject();
 } else {
@@ -749,7 +749,7 @@ function webAssemblyFail(e) {
     zstdDecode = null;
     zstd = false;
     binCraft = false;
-    if (adsbfi && !uuid) {
+    if (flyovrio && !uuid) {
         inhibitFetch = true;
         reApi = false;
         jQuery("#generic_error_detail").text("Your browser is not supporting webassembly, this website does not work without webassembly.");
