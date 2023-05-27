@@ -11,7 +11,7 @@ fi
 
 
 srcdir=/run/dump1090-fa
-repo="https://github.com/adsbfi/tar1090"
+repo="https://github.com/flyovr/tar1090"
 db_repo="https://github.com/adsbfi/tar1090-db"
 ipath=/usr/local/share/tar1090
 lighttpd=no
