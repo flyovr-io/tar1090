@@ -51,7 +51,7 @@ select {
     z-index: 1;
     background-color: var(--BGCOLOR1);
 }
-.adsbfi-selected-bg:before {
+.flyovrio-selected-bg:before {
     content: ' ';
     position:absolute;
     display:block;
